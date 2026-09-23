@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GKVR font options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Space+Grotesk:wght@400;600;700&family=Sora:wght@400;600;700;800&family=Unbounded:wght@400;600;700&family=Syne:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,700,800&f[]=general-sans@400,600,700&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; background:#f8f5ee; font-family:'Plus Jakarta Sans',sans-serif; }
+  .block { background:#101334; color:#f8f5ee; padding:56px 64px 64px; margin:28px auto; max-width:1000px; border-radius:24px; }
+  .tag { display:inline-block; background:#f0a63a; color:#101334; font-weight:700; font-size:13px; padding:6px 14px; border-radius:99px; margin-bottom:22px; letter-spacing:.06em; text-transform:uppercase; }
+  .eyebrow { color:#f0a63a; letter-spacing:.24em; font-size:13px; font-weight:600; margin:0 0 18px; }
+  h1 { font-size:72px; line-height:1.04; margin:0 0 22px; letter-spacing:-0.015em; }
+  h1 .accent { color:#f0a63a; }
+  .sub { color:rgba(248,245,238,.75); font-size:18px; max-width:560px; line-height:1.6; margin:0 0 10px; }
+  .cardline { color:rgba(248,245,238,.9); font-size:24px; font-weight:700; margin-top:26px; }
+  .f1 h1,.f1 .cardline { font-family:'Outfit',sans-serif; font-weight:700; }
+  .f2 h1,.f2 .cardline { font-family:'Cabinet Grotesk',sans-serif; font-weight:800; }
+  .f3 h1,.f3 .cardline { font-family:'General Sans',sans-serif; font-weight:600; }
+  .f4 h1,.f4 .cardline { font-family:'Space Grotesk',sans-serif; font-weight:700; }
+  .f5 h1,.f5 .cardline { font-family:'Sora',sans-serif; font-weight:700; }
+  .f6 h1,.f6 .cardline { font-family:'Unbounded',sans-serif; font-weight:600; font-size:56px; }
+  .f7 h1,.f7 .cardline { font-family:'Syne',sans-serif; font-weight:800; }
+</style>
+</head>
+<body>
+<p style="text-align:center;padding-top:28px;font-size:15px;color:#555">Same hero, seven display fonts - tell us the number you like.</p>
+<div id="options"></div>
+<script>
+const fonts = [
+  ["f1","1 · Outfit"],["f2","2 · Cabinet Grotesk"],["f3","3 · General Sans"],
+  ["f4","4 · Space Grotesk"],["f5","5 · Sora"],["f6","6 · Unbounded"],["f7","7 · Syne (current)"]
+];
+document.getElementById("options").innerHTML = fonts.map(([cls,label]) => `
+  <section class="block ${cls}">
+    <span class="tag">${label}</span>
+    <p class="eyebrow">- - - &nbsp;CHENNAI-BORN. WORLD-BOUND.</p>
+    <h1>Journeys designed<br>around <span class="accent">you.</span></h1>
+    <p class="sub">Personalised holidays across India and the world, planned end to end by travel specialists who stay with you.</p>
+    <p class="cardline">Kerala: Backwaters &amp; Tea Hills · Dubai: City Lights &amp; Desert Gold</p>
+  </section>`).join("");
+</script>
+</body>
+</html>
