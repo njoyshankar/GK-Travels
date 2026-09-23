@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import localFont from "next/font/local";
 import Header from "@/components/layout/Header";
+import Preloader from "@/components/layout/Preloader";
 import Footer from "@/components/layout/Footer";
 import MobileActionBar from "@/components/layout/MobileActionBar";
 import { brand } from "@/data/site-content";
@@ -89,6 +90,7 @@ export default function RootLayout({
         <noscript>
           <style>{`[style*="opacity"], [style*="clip-path"] { opacity: 1 !important; transform: none !important; clip-path: none !important; }`}</style>
         </noscript>
+        <Preloader />
         <Header />
         <main id="main" className="pb-[52px] md:pb-0">
           {children}
