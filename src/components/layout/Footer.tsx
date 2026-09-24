@@ -29,7 +29,7 @@ export default function Footer() {
                 alt="GKVR Vacations logo"
                 width={1122}
                 height={490}
-                className="h-10 w-auto"
+                className="h-16 w-auto"
               />
             </div>
             <p className="mt-5 max-w-sm text-[0.9375rem] leading-relaxed text-ivory/70">

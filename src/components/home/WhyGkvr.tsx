@@ -20,9 +20,9 @@ export default function WhyGkvr() {
   const reduce = useReducedMotion();
   return (
     <section className="bg-ink py-20 text-ivory lg:py-28">
-      <div className="mx-auto grid max-w-[1320px] items-center gap-14 px-4 sm:px-6 lg:grid-cols-[1fr_1.1fr] lg:gap-20 lg:px-8">
-        <Reveal className="relative order-last lg:order-first">
-          <div className="group relative aspect-[4/5] overflow-hidden rounded-xl3">
+      <div className="mx-auto grid max-w-[1320px] items-center gap-14 px-4 sm:px-6 lg:grid-cols-[1fr_1.1fr] lg:items-stretch lg:gap-20 lg:px-8">
+        <Reveal className="relative order-last flex flex-col lg:order-first">
+          <div className="group relative aspect-[4/5] overflow-hidden rounded-xl3 lg:aspect-auto lg:min-h-0 lg:flex-1">
             <Image
               src={sectionImages.whyGkvr.src}
               alt={sectionImages.whyGkvr.alt}
@@ -55,21 +55,23 @@ export default function WhyGkvr() {
             initial={reduce ? false : "hidden"}
             whileInView="visible"
             viewport={viewportOnce}
-            className="mt-12 grid gap-x-10 gap-y-9 sm:grid-cols-2"
+            className="mt-8 grid gap-x-8 gap-y-6 sm:grid-cols-2"
           >
             {whyGkvr.map((item) => {
               const Icon = icons[item.icon];
               return (
-                <motion.li key={item.title} variants={fadeUp}>
-                  <span className="inline-flex size-12 items-center justify-center rounded-xl2 bg-saffron/12 text-saffron">
-                    <Icon className="size-5" aria-hidden />
+                <motion.li key={item.title} variants={fadeUp} className="flex gap-3.5">
+                  <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-xl2 bg-saffron/12 text-saffron">
+                    <Icon className="size-4.5" aria-hidden />
                   </span>
-                  <h3 className="font-display mt-4 text-xl font-medium">
-                    {item.title}
-                  </h3>
-                  <p className="mt-2 text-[0.9375rem] leading-relaxed text-ivory/65">
-                    {item.description}
-                  </p>
+                  <span>
+                    <h3 className="font-display text-lg font-medium leading-snug">
+                      {item.title}
+                    </h3>
+                    <p className="mt-1 text-sm leading-relaxed text-ivory/65">
+                      {item.description}
+                    </p>
+                  </span>
                 </motion.li>
               );
             })}
@@ -77,17 +79,17 @@ export default function WhyGkvr() {
 
           {trustStats.length > 0 && (
             <Reveal delay={0.1}>
-              <dl className="mt-12 flex flex-wrap items-end gap-x-14 gap-y-8 border-t border-ivory/10 pt-9">
+              <dl className="mt-8 flex flex-wrap items-end gap-x-12 gap-y-5 border-t border-ivory/10 pt-6">
                 {trustStats.map((stat, i) => (
                   <div key={stat.label}>
                     <dd
                       className={`font-display font-extrabold leading-none text-saffron ${
-                        i === 0 ? "text-7xl sm:text-8xl" : "text-5xl sm:text-6xl"
+                        i === 0 ? "text-5xl sm:text-6xl" : "text-4xl sm:text-5xl"
                       }`}
                     >
                       <CountUp value={stat.value} />
                     </dd>
-                    <dt className="mt-2 text-sm font-medium text-ivory/65">
+                    <dt className="mt-1.5 text-sm font-medium text-ivory/65">
                       {stat.label}
                     </dt>
                   </div>

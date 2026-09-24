@@ -13,36 +13,21 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import {
-  Briefcase,
+  ArrowUpRight,
   ChevronDown,
-  Flower2,
-  Gem,
-  Heart,
-  MapPin,
   Menu,
   Phone,
-  Users,
-  UsersRound,
   X,
 } from "lucide-react";
 import InstagramIcon from "@/components/ui/InstagramIcon";
 import WhatsAppIcon from "@/components/ui/WhatsAppIcon";
-import { brand, destinations } from "@/data/site-content";
+import { brand, destinations, sectionImages } from "@/data/site-content";
 import { EASE } from "@/lib/motion";
-
-const holidayTypeLinks = [
-  { label: "Family", href: "/holiday-types#family", icon: Users },
-  { label: "Honeymoon", href: "/holiday-types#honeymoon", icon: Heart },
-  { label: "Group Tours", href: "/holiday-types#groups", icon: UsersRound },
-  { label: "Spiritual", href: "/holiday-types#spiritual", icon: Flower2 },
-  { label: "Luxury", href: "/holiday-types#luxury", icon: Gem },
-  { label: "Corporate / MICE", href: "/corporate", icon: Briefcase },
-] as const;
 
 export default function Header() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
-  const [openMenu, setOpenMenu] = useState<"destinations" | "holidays" | null>(
+  const [openMenu, setOpenMenu] = useState<"india" | "international" | null>(
     null
   );
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -132,14 +117,14 @@ export default function Header() {
   }, [drawerOpen]);
 
   const toggleMenu = useCallback(
-    (menu: "destinations" | "holidays") =>
+    (menu: "india" | "international") =>
       setOpenMenu((current) => (current === menu ? null : menu)),
     []
   );
 
   const linkClass = (href: string) => {
     const active = pathname === href || (href !== "/" && pathname.startsWith(href));
-    return `relative rounded-full px-3.5 py-2 text-[0.9375rem] font-medium transition-colors ${
+    return `relative whitespace-nowrap rounded-full px-3.5 py-2 text-[0.9375rem] font-medium transition-colors ${
       active
         ? solid
           ? "text-saffron-deep"
@@ -170,7 +155,7 @@ export default function Header() {
       <nav
         ref={navRef}
         aria-label="Main"
-        className="mx-auto flex h-[74px] max-w-[1320px] items-center justify-between gap-4 px-4 sm:px-6 lg:px-8"
+        className="mx-auto flex h-[84px] max-w-[1320px] items-center justify-between gap-4 px-4 sm:px-6 lg:px-8"
       >
         <Link
           href="/"
@@ -188,7 +173,7 @@ export default function Header() {
               width={1122}
               height={490}
               priority
-              className="h-9 w-auto sm:h-10"
+              className="h-12 w-auto sm:h-14"
             />
           </span>
         </Link>
@@ -202,15 +187,15 @@ export default function Header() {
           <div className="relative">
             <button
               type="button"
-              onClick={() => toggleMenu("destinations")}
-              aria-expanded={openMenu === "destinations"}
+              onClick={() => toggleMenu("india")}
+              aria-expanded={openMenu === "india"}
               aria-haspopup="true"
-              className={`${linkClass("/destinations")} inline-flex items-center gap-1`}
+              className={`${linkClass("/destinations/india")} inline-flex items-center gap-1`}
             >
-              Destinations
+              India Tours
               <ChevronDown
                 className={`size-3.5 transition-transform duration-200 ${
-                  openMenu === "destinations" ? "rotate-180" : ""
+                  openMenu === "india" ? "rotate-180" : ""
                 }`}
                 aria-hidden
               />
@@ -220,24 +205,22 @@ export default function Header() {
           <div className="relative">
             <button
               type="button"
-              onClick={() => toggleMenu("holidays")}
-              aria-expanded={openMenu === "holidays"}
+              onClick={() => toggleMenu("international")}
+              aria-expanded={openMenu === "international"}
               aria-haspopup="true"
-              className={`${linkClass("/holiday-types")} inline-flex items-center gap-1`}
+              className={`${linkClass("/destinations/international")} inline-flex items-center gap-1`}
             >
-              Holiday Types
+              International Tours
               <ChevronDown
                 className={`size-3.5 transition-transform duration-200 ${
-                  openMenu === "holidays" ? "rotate-180" : ""
+                  openMenu === "international" ? "rotate-180" : ""
                 }`}
                 aria-hidden
               />
             </button>
           </div>
 
-          <Link href="/plan-my-trip" className={linkClass("/plan-my-trip")}>
-            Customise My Trip
-          </Link>
+
           <Link href="/about" className={linkClass("/about")}>
             About
           </Link>
@@ -249,7 +232,7 @@ export default function Header() {
         <div className="flex items-center gap-2">
           <a
             href={brand.phoneHref}
-            className={`hidden size-11 items-center justify-center rounded-full border transition-all duration-200 hover:-translate-y-0.5 md:inline-flex ${
+            className={`hidden size-11 items-center justify-center rounded-full border transition-all duration-200 hover:-translate-y-0.5 xl:inline-flex ${
               solid
                 ? "border-ink/15 text-ink hover:border-saffron-deep hover:text-saffron-deep"
                 : "border-ivory/30 text-ivory hover:border-ivory"
@@ -273,7 +256,7 @@ export default function Header() {
             href={brand.instagramHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden size-11 items-center justify-center rounded-full bg-gradient-to-tr from-[#F58529] via-[#DD2A7B] to-[#8134AF] text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:brightness-110 md:inline-flex"
+            className="hidden size-11 items-center justify-center rounded-full bg-gradient-to-tr from-[#F58529] via-[#DD2A7B] to-[#8134AF] text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:brightness-110 xl:inline-flex"
             aria-label="GKVR Vacations on Instagram"
             title="Follow on Instagram"
           >
@@ -281,7 +264,7 @@ export default function Header() {
           </a>
           <Link
             href="/plan-my-trip"
-            className="hidden min-h-11 items-center rounded-full bg-saffron px-6 py-2.5 text-[0.9375rem] font-semibold text-ink-deep shadow-[0_8px_24px_-8px_rgba(240,166,58,0.55)] transition-colors hover:bg-saffron-deep hover:text-ivory sm:inline-flex"
+            className="hidden min-h-11 items-center whitespace-nowrap rounded-full bg-saffron px-6 py-2.5 text-[0.9375rem] font-semibold text-ink-deep shadow-[0_8px_24px_-8px_rgba(240,166,58,0.55)] transition-colors hover:bg-saffron-deep hover:text-ivory sm:inline-flex"
           >
             Plan My Trip
           </Link>
@@ -302,105 +285,115 @@ export default function Header() {
         </div>
       </nav>
 
-      {/* Destinations mega menu */}
+      {/* Region tour menus */}
       <AnimatePresence>
-        {openMenu === "destinations" && (
+        {(openMenu === "india" || openMenu === "international") && (
           <motion.div
+            key={openMenu}
             initial={reduce ? false : { opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.22, ease: EASE }}
             className="absolute inset-x-0 top-full hidden border-b border-ink/8 bg-ivory shadow-[0_24px_48px_-24px_rgba(23,27,69,0.35)] lg:block"
           >
-            <div className="mx-auto grid max-w-[1320px] grid-cols-[1fr_1.7fr_1fr] gap-12 px-8 py-10">
+            <div className="mx-auto grid max-w-[1320px] grid-cols-[2fr_1fr] gap-10 px-8 py-8">
               <div>
-                <p className="px-3 text-xs font-semibold uppercase tracking-[0.2em] text-saffron-deep">
-                  Incredible India
+                <p className="flex items-center gap-3 px-2 text-xs font-semibold uppercase tracking-[0.2em] text-saffron-deep">
+                  <span className="route-line inline-block h-px w-8" aria-hidden />
+                  {openMenu === "india" ? "Incredible India" : "Around the world"}
                 </p>
-                <ul className="mt-4 space-y-0.5">
-                  {india.map((d) => (
+                <ul className="mt-4 grid grid-cols-2 gap-x-6 gap-y-1">
+                  {(openMenu === "india" ? india : world).map((d) => (
                     <li key={d.slug}>
                       <Link
                         href={`/destinations/${d.slug}`}
-                        className="group flex items-center gap-2.5 rounded-lg px-3 py-2 text-[0.9375rem] font-medium text-ink transition-colors hover:bg-sand/60 hover:text-saffron-deep"
+                        className="group flex items-center gap-3.5 rounded-xl2 p-2 transition-colors hover:bg-sand/60"
                       >
-                        <MapPin className="size-3.5 shrink-0 text-saffron-deep/60 transition-all duration-200 group-hover:translate-x-0.5 group-hover:text-saffron-deep" aria-hidden />
-                        <span className="transition-transform duration-200 group-hover:translate-x-0.5">{d.name}</span>
+                        <span className="relative size-12 shrink-0 overflow-hidden rounded-lg">
+                          <Image
+                            src={d.image}
+                            alt=""
+                            fill
+                            sizes="48px"
+                            className="object-cover transition-transform duration-500 group-hover:scale-110"
+                          />
+                        </span>
+                        <span className="min-w-0 flex-1">
+                          <span className="block truncate text-[0.9375rem] font-semibold text-ink transition-colors group-hover:text-saffron-deep">
+                            {d.name}
+                          </span>
+                          <span className="block truncate text-xs text-mist">
+                            {d.tagline}
+                          </span>
+                        </span>
+                        <ArrowUpRight
+                          className="size-4 shrink-0 text-saffron-deep opacity-0 transition-all duration-200 group-hover:translate-x-0.5 group-hover:opacity-100"
+                          aria-hidden
+                        />
                       </Link>
                     </li>
                   ))}
                 </ul>
-                <Link
-                  href="/destinations/india"
-                  className="mt-4 inline-block px-3 text-sm font-semibold text-saffron-deep hover:underline"
-                >
-                  All India journeys →
-                </Link>
+                <div className="mt-4 flex gap-7 px-2">
+                  <Link
+                    href={
+                      openMenu === "india"
+                        ? "/destinations/india"
+                        : "/destinations/international"
+                    }
+                    className="inline-flex items-center gap-1.5 text-sm font-bold text-saffron-deep hover:underline"
+                  >
+                    All {openMenu === "india" ? "India" : "international"}{" "}
+                    destinations
+                    <ArrowUpRight className="size-3.5" aria-hidden />
+                  </Link>
+                  <Link
+                    href="/journeys"
+                    className="inline-flex items-center gap-1.5 text-sm font-bold text-saffron-deep hover:underline"
+                  >
+                    View {openMenu === "india" ? "India" : "international"} tours
+                    <ArrowUpRight className="size-3.5" aria-hidden />
+                  </Link>
+                </div>
               </div>
-              <div>
-                <p className="px-3 text-xs font-semibold uppercase tracking-[0.2em] text-saffron-deep">
-                  Around the world
-                </p>
-                <ul className="mt-4 grid grid-cols-2 gap-x-4 gap-y-0.5">
-                  {world.map((d) => (
-                    <li key={d.slug}>
-                      <Link
-                        href={`/destinations/${d.slug}`}
-                        className="group flex items-center gap-2.5 rounded-lg px-3 py-2 text-[0.9375rem] font-medium text-ink transition-colors hover:bg-sand/60 hover:text-saffron-deep"
-                      >
-                        <MapPin className="size-3.5 shrink-0 text-saffron-deep/60 transition-all duration-200 group-hover:translate-x-0.5 group-hover:text-saffron-deep" aria-hidden />
-                        <span className="transition-transform duration-200 group-hover:translate-x-0.5">{d.name}</span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-                <Link
-                  href="/destinations/international"
-                  className="mt-4 inline-block px-3 text-sm font-semibold text-saffron-deep hover:underline"
-                >
-                  All international journeys →
-                </Link>
-              </div>
-              <div className="rounded-xl3 bg-ink p-6 text-ivory">
-                <p className="font-display text-xl leading-snug">
-                  Not sure where to go?
-                </p>
-                <p className="mt-2 text-sm leading-relaxed text-ivory/70">
-                  Tell us your budget and travel month - we&apos;ll shortlist
-                  destinations that truly fit.
-                </p>
-                <Link
-                  href="/plan-my-trip"
-                  className="mt-5 inline-flex min-h-11 items-center rounded-full bg-saffron px-5 py-2 text-sm font-semibold text-ink-deep hover:bg-saffron-deep hover:text-ivory"
-                >
-                  Start planning
-                </Link>
-              </div>
-            </div>
-          </motion.div>
-        )}
 
-        {/* Holiday types menu */}
-        {openMenu === "holidays" && (
-          <motion.div
-            key="holidays"
-            initial={reduce ? false : { opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.22, ease: EASE }}
-            className="absolute inset-x-0 top-full hidden border-b border-ink/8 bg-ivory shadow-[0_24px_48px_-24px_rgba(23,27,69,0.35)] lg:block"
-          >
-            <div className="mx-auto flex max-w-[1320px] flex-wrap gap-3 px-8 py-8">
-              {holidayTypeLinks.map((t) => (
-                <Link
-                  key={t.label}
-                  href={t.href}
-                  className="group inline-flex items-center gap-2.5 rounded-full border border-ink/12 px-5 py-2.5 text-[0.9375rem] font-medium text-ink transition-all duration-200 hover:-translate-y-0.5 hover:border-saffron-deep hover:bg-sand/50 hover:text-saffron-deep"
-                >
-                  <t.icon className="size-4 text-saffron-deep/70 transition-colors group-hover:text-saffron-deep" aria-hidden />
-                  {t.label}
-                </Link>
-              ))}
+              {/* Image promo card */}
+              <Link
+                href={`/plan-my-trip?region=${openMenu}`}
+                className="group relative flex min-h-[280px] flex-col justify-end overflow-hidden rounded-xl3 p-7"
+              >
+                <Image
+                  src={
+                    openMenu === "india"
+                      ? sectionImages.india.src
+                      : sectionImages.international.src
+                  }
+                  alt=""
+                  fill
+                  sizes="420px"
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.06]"
+                />
+                <span
+                  className="absolute inset-0 bg-gradient-to-t from-ink-deep/95 via-ink-deep/55 to-ink-deep/25"
+                  aria-hidden
+                />
+                <span className="relative">
+                  <span className="font-display block text-2xl leading-snug text-ivory">
+                    {openMenu === "india"
+                      ? "Somewhere else in India?"
+                      : "Not sure where to go?"}
+                  </span>
+                  <span className="mt-2 block text-sm leading-relaxed text-ivory/75">
+                    {openMenu === "india"
+                      ? "Rajasthan, the Andamans, temple circuits - if it's in India, we plan it."
+                      : "Tell us your budget and travel month - we'll shortlist what truly fits."}
+                  </span>
+                  <span className="mt-4 inline-flex min-h-10 items-center gap-2 rounded-full bg-saffron px-5 py-2 text-sm font-bold text-ink-deep transition-colors group-hover:bg-saffron-deep group-hover:text-ivory">
+                    Start planning
+                    <ArrowUpRight className="size-4" aria-hidden />
+                  </span>
+                </span>
+              </Link>
             </div>
           </motion.div>
         )}
@@ -438,7 +431,7 @@ export default function Header() {
                   alt="GKVR Vacations logo"
                   width={1122}
                   height={490}
-                  className="h-9 w-auto"
+                  className="h-12 w-auto"
                 />
                 <button
                   type="button"
@@ -457,16 +450,13 @@ export default function Header() {
                 <ul className="space-y-1">
                   {[
                     { label: "Home", href: "/" },
-                    { label: "Destinations", href: "/destinations" },
-                    { label: "India", href: "/destinations/india", sub: true },
+                    { label: "India Tours", href: "/destinations/india" },
                     {
-                      label: "International",
+                      label: "International Tours",
                       href: "/destinations/international",
-                      sub: true,
                     },
-                    { label: "Holiday Types", href: "/holiday-types" },
+                    { label: "All Journeys", href: "/journeys", sub: true },
                     { label: "Corporate & MICE", href: "/corporate" },
-                    { label: "Customise My Trip", href: "/plan-my-trip" },
                     { label: "About", href: "/about" },
                     { label: "Contact", href: "/contact" },
                   ].map((item) => (
