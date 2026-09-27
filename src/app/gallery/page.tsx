@@ -24,12 +24,12 @@ export default function GalleryPage() {
             Travel memories
           </p>
           <h1 className="font-display mt-4 text-balance text-4xl font-medium leading-[1.08] text-ink sm:text-5xl">
-            Real people. Real journeys.
+            Souvenirs you can&apos;t buy.
           </h1>
           <p className="mt-5 max-w-xl text-pretty text-lg leading-relaxed text-charcoal/70">
-            Families at the Taj at sunrise, sea-walkers in the Andamans, first
-            stamps in new passports - our travellers, out in the world. One
-            day this could be you.
+            Straight from our travellers&apos; cameras - Kashmir meadows, Taj
+            mornings, Andaman blues. No filters, no posing, just great trips.
+            Your album could be next.
           </p>
         </Reveal>
 
