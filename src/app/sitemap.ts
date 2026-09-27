@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/destinations/india",
     "/destinations/international",
     "/journeys",
+    "/gallery",
     "/holiday-types",
     "/plan-my-trip",
     "/corporate",

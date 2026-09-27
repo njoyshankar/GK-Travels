@@ -17,7 +17,9 @@ export const brand = {
   eyebrow: "Chennai-born. World-bound.",
   description:
     "Personalised holidays across India and the world, planned end to end by travel specialists who stay with you before, during and after your journey.",
+  address: "Flat B, Plot No.59A, Godhavari Street, Palaniappa Nagar",
   city: "Chennai",
+  pincode: "600087",
   state: "Tamil Nadu",
   country: "India",
   phone: "+91 96290 97222",

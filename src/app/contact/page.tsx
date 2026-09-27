@@ -101,8 +101,13 @@ export default function ContactPage() {
                   <dt className="text-sm font-semibold uppercase tracking-wide text-mist">
                     Location
                   </dt>
-                  <dd className="text-lg font-bold text-ink">
-                    {brand.city}, {brand.state}, {brand.country}
+                  <dd>
+                    <span className="block text-lg font-bold leading-snug text-ink">
+                      {brand.address},
+                    </span>
+                    <span className="block text-lg font-bold leading-snug text-ink">
+                      {brand.city} - {brand.pincode}, {brand.state}, {brand.country}
+                    </span>
                   </dd>
                 </div>
               </div>

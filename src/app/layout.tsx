@@ -59,7 +59,9 @@ const structuredData = {
   telephone: brand.phone,
   address: {
     "@type": "PostalAddress",
+    streetAddress: brand.address,
     addressLocality: brand.city,
+    postalCode: brand.pincode,
     addressRegion: brand.state,
     addressCountry: "IN",
   },

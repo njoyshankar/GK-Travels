@@ -224,6 +224,9 @@ export default function Header() {
           <Link href="/about" className={linkClass("/about")}>
             About
           </Link>
+          <Link href="/gallery" className={linkClass("/gallery")}>
+            Gallery
+          </Link>
           <Link href="/contact" className={linkClass("/contact")}>
             Contact
           </Link>
@@ -458,6 +461,7 @@ export default function Header() {
                     { label: "All Journeys", href: "/journeys", sub: true },
                     { label: "Corporate & MICE", href: "/corporate" },
                     { label: "About", href: "/about" },
+                    { label: "Gallery", href: "/gallery" },
                     { label: "Contact", href: "/contact" },
                   ].map((item) => (
                     <li key={item.href}>

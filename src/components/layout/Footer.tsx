@@ -37,9 +37,13 @@ export default function Footer() {
               holidays across India and the world - planned end to end, with a
               real person beside you throughout the journey.
             </p>
-            <p className="mt-6 flex items-center gap-2 text-sm text-ivory/60">
-              <MapPin className="size-4 text-saffron" aria-hidden />
-              {brand.city}, {brand.state}, {brand.country}
+            <p className="mt-6 flex items-start gap-2 text-sm leading-relaxed text-ivory/60">
+              <MapPin className="mt-0.5 size-4 shrink-0 text-saffron" aria-hidden />
+              <span>
+                {brand.address},
+                <br />
+                {brand.city} - {brand.pincode}, {brand.state}, {brand.country}
+              </span>
             </p>
           </div>
 
